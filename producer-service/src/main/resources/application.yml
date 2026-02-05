@@ -1,0 +1,48 @@
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+
+mock:
+  api:
+    base-url: ${MOCK_API_URL:http://localhost:8080}
+
+scheduler:
+  rate-ms: 60000
+
+resilience4j:
+  retry:
+    instances:
+      crmRetry:
+        max-attempts: 3
+        wait-duration: 2s
+        exponential-backoff-multiplier: 2
+      inventoryRetry:
+        max-attempts: 3
+        wait-duration: 2s
+        exponential-backoff-multiplier: 2
+
+  circuitbreaker:
+    instances:
+      crmCircuit:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3
+        minimum-number-of-calls: 5
+      inventoryCircuit:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+
+logging:
+  level:
+    com.integration.producer: INFO
+    org.springframework.kafka: WARN
+    org.springframework.retry: DEBUG
+    io.github.resilience4j: DEBUG
+

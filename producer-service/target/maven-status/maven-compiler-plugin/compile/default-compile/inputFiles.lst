@@ -1,0 +1,9 @@
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\service\InventoryClient.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\scheduler\FetchScheduler.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\config\RestTemplateConfig.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\service\CRMClient.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\IntegrationProducerApplication.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\model\Product.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\producer\KafkaPublishService.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\model\Customer.java
+C:\Users\user\Downloads\integration-pipeline-PRODUCTION\producer-service\src\main\java\com\integration\config\KafkaTopics.java

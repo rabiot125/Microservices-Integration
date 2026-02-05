@@ -1,0 +1,7 @@
+aiokafka
+aiohttp
+redis
+tenacity
+prometheus-client
+loguru
+

@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: Mock Integration APIs
+  version: 1.0.0
+  description:
+    Mock APIs used for Integration Pipeline Assignment.
+    Includes Customers, Products, and Analytics endpoints.
+
+#servers:
+#  - url: http://localhost:8080
+
+paths:
+
+  /customers:
+
+    get:
+      summary: Fetch all customers
+      description: Returns a list of customers from the CRM system.
+      responses:
+        "200":
+          description: List of customers returned successfully
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: "Test Client1"
+                  email: "test1@test.com"
+                - id: 2
+                  name: "Test Client2"
+                  email: "test2@test.com"
+
+    post:
+      summary: Create a new customer
+      description: Adds a new customer into the CRM system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              name: "Jane Doe"
+              email: "jane@test.com"
+
+      responses:
+        "201":
+          description: Customer created successfully
+          content:
+            application/json:
+              example:
+                id: 3
+                name: "Jane Doe"
+                email: "jane@test.com"
+                status: "CREATED"
+
+
+  /products:
+
+    get:
+      summary: Fetch product inventory
+      description: Returns a list of products available in inventory.
+      responses:
+        "200":
+          description: List of products returned successfully
+          content:
+            application/json:
+              example:
+                - productId: 100
+                  name: "Laptop"
+                  stock: 25
+                - productId: 200
+                  name: "Mouse"
+                  stock: 150
+
+
+  /analytics/data:
+
+    post:
+      summary: Send merged analytics record
+      description: Receives merged customer + product purchase data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              customerId: 1
+              customerName: "Test Client1"
+              productId: 100
+              productName: "Laptop"
+              quantity: 1
+              timestamp: "2026-02-01T12:00:00Z"
+
+      responses:
+        "200":
+          description: Analytics ingestion successful
+          content:
+            application/json:
+              example:
+                status: "SUCCESS"
+                message: "Record stored successfully"

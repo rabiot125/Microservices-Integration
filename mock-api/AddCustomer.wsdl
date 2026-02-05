@@ -1,0 +1,47 @@
+<definitions
+        name="AddCustomerService"
+        targetNamespace="http://crm.mock.com/"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://crm.mock.com/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <message name="AddCustomerRequest">
+        <part name="name" type="xsd:string"/>
+        <part name="email" type="xsd:string"/>
+    </message>
+
+    <message name="AddCustomerResponse">
+        <part name="result" type="xsd:string"/>
+    </message>
+
+    <portType name="AddCustomerPortType">
+        <operation name="AddCustomer">
+            <input message="tns:AddCustomerRequest"/>
+            <output message="tns:AddCustomerResponse"/>
+        </operation>
+    </portType>
+
+
+    <binding name="AddCustomerBinding" type="tns:AddCustomerPortType">
+        <soap:binding style="rpc"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="AddCustomer">
+            <soap:operation soapAction="AddCustomer"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+
+    <service name="AddCustomerService">
+        <port name="AddCustomerPort" binding="tns:AddCustomerBinding">
+            <soap:address location="http://localhost:8081/soap/addCustomer"/>
+        </port>
+    </service>
+
+</definitions>
